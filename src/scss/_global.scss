@@ -79,12 +79,19 @@ input {
 .footer {
     flex: 0 0 auto;
 }
-
-.container {
-    // max-width: 392px;
+.container-main,
+.container-minor {
     width: 100%;
-    padding: 0 16px 0;
     margin: 0 auto;
+}
+.container-main {
+    max-width: 1280px;
+
+    padding: 0 40px 0;
+}
+.container-minor {
+    max-width: 1031px;
+    padding: 0 20px 0;
 }
 .visually-hidden {
     clip: rect(0 0 0 0);
@@ -117,4 +124,11 @@ input {
 // }
 .title {
     font-weight: bold;
+}
+
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button,
+input::-webkit-search-results-button,
+input::-webkit-search-results-decoration {
+    display: none;
 }
