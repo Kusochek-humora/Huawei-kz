@@ -375,6 +375,14 @@
         // &:first-child {
         //     margin-bottom: 20px;
         // }
+        span {
+            transition: 0.3s all;
+        }
+        &:hover {
+            span {
+                color: $red;
+            }
+        }
         cursor: pointer;
     }
 

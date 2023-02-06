@@ -30,12 +30,15 @@ document.addEventListener('DOMContentLoaded', function () {
         langDropdown.removeAttribute('style');
     }
 
-    function closingLangBox() {
+    function closingLangBox(btn) {
+        console.log(btn)
         if (langDropdown.hasAttribute('style')) {
+            langBoxBtn.classList.remove('active');
             langDropdown.removeAttribute('style');
 
         } else {
             langDropdown.style.maxHeight = langDropdown.scrollHeight + "px";
+            langBoxBtn.classList.add('active');
         }
     }
 
@@ -68,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function () {
         })
 
     }
-    hoverMenu(menu,overlay);
+    hoverMenu(menu, overlay);
 
     function mouseover() {
 
