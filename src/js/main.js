@@ -10,14 +10,16 @@ document.addEventListener('DOMContentLoaded', function () {
         langForm = langBox.querySelector('.lang__form '),
         langRadioInput = langBox.querySelectorAll('.lang__form-input'),
         langBoxBtn = langBox.querySelector('.lang__button'),
-        langDropdown = langBox.querySelector('.lang__dropdown');
+        langDropdown = langBox.querySelector('.lang__dropdown'),
+        menu = document.querySelector('.menu'),
+        overlay = document.querySelector('.overlay');
 
     function addClasses() {
         searchBox.classList.add('active');
         headerMenu.classList.add('inactive');
         searchBtn.classList.add('inactive');
         langBox.classList.add('inactive');
-        closingLangBox();
+
     }
 
     function removeClasses() {
@@ -25,13 +27,15 @@ document.addEventListener('DOMContentLoaded', function () {
         headerMenu.classList.remove('inactive');
         searchBtn.classList.remove('inactive');
         langBox.classList.remove('inactive');
+        langDropdown.removeAttribute('style');
     }
 
     function closingLangBox() {
-        if (!langDropdown.hasAttribute('style')) {
-            langDropdown.style.maxHeight = langDropdown.scrollHeight + "px";
-        } else {
+        if (langDropdown.hasAttribute('style')) {
             langDropdown.removeAttribute('style');
+
+        } else {
+            langDropdown.style.maxHeight = langDropdown.scrollHeight + "px";
         }
     }
 
@@ -43,24 +47,35 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
+
+    function hoverMenu(menu, overlay) {
+        const menuItem = menu.querySelectorAll('.menu__item'),
+            menuClose = menu.querySelectorAll('.menu__dropdown-close');
+
+        menuItem.forEach((item, index) => {
+            item.addEventListener('mouseenter', function (e) {
+                e.target.lastElementChild.classList.add('active');
+                overlay.classList.add('active');
+            });
+            item.addEventListener('mouseleave', function (e) {
+                e.target.lastElementChild.classList.remove('active');
+                overlay.classList.remove('active');
+            });
+            menuClose[index].addEventListener('click', function () {
+                item.lastElementChild.classList.remove('active');
+                overlay.classList.remove('active');
+            })
+        })
+
+    }
+    hoverMenu(menu,overlay);
+
+    function mouseover() {
+
+    }
     searchBtn.addEventListener('click', addClasses);
     searchBtnClose.addEventListener('click', removeClasses);
     langBox.addEventListener('click', closingLangBox);
     langForm.addEventListener('change', choosingTextLang);
+
 });
-// let timeClose = setInterval(deleteMaxHeight, 5000);
-
-// function deleteMaxHeight() {
-//     langDropdown.removeAttribute('style');
-// }
-
-
-// function closingLangDropdwon() {
-//     timeClose();
-// }
-
-// function updateTimeClose() {
-//     clearInterval(timeClose);
-// }  
-// header.addEventListener('mouseleave', closingLangDropdwon);
-// header.addEventListener('mouseenter', updateTimeClose)
