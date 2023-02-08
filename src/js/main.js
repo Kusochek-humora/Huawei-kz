@@ -130,16 +130,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
-
-
-
-
     function addClasses() {
         searchBox.classList.add('active');
         headerMenu.classList.add('inactive');
         searchBtn.classList.add('inactive');
         langBox.classList.add('inactive');
-        
+
         overlay.classList.remove('active');
         const menuDropdowns = menu.querySelectorAll('.menu__dropdown');
         menuDropdowns.forEach((item, index) => {
