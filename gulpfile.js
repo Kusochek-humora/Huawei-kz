@@ -1,4 +1,3 @@
-
 import babel from 'gulp-babel';
 import concat from 'gulp-concat';
 import csso from 'gulp-csso';
@@ -18,10 +17,12 @@ import uglify from 'gulp-uglify';
 
 export const buildHtml = () => {
 	return gulp.src([
-		'src/**/*.html'
-	])
+			'src/**/*.html'
+		])
 		.pipe(plumber())
-		.pipe(ssi({ root: './src' }))
+		.pipe(ssi({
+			root: './src'
+		}))
 		.pipe(gulp.dest('dist'))
 		.pipe(sync.stream());
 };
@@ -30,8 +31,8 @@ export const buildHtml = () => {
 
 export const buildJs = (done) => {
 	gulp.src([
-		'src/js/vendor/*.js'
-	])
+			'src/js/vendor/*.js'
+		])
 		.pipe(plumber())
 		.pipe(uglify())
 		.pipe(concat('vendor.min.js'))
@@ -58,8 +59,8 @@ export const buildJs = (done) => {
 
 export const buildCss = (done) => {
 	gulp.src([
-		'node_modules/normalize.css/normalize.css',
-	])
+			'node_modules/normalize.css/normalize.css',
+		])
 		.pipe(prefixer())
 		.pipe(csso())
 		.pipe(concat('vendor.min.css'))
@@ -136,11 +137,14 @@ export const buildAll = gulp.series(
 
 export const server = () => {
 	sync.init({
-		ui: false,
-		notify: false,
+		// ui: false,
+
 		server: {
 			baseDir: 'dist'
-		}
+		},
+		notify: false,
+		online: true,
+		// tunnel: 'test',
 	});
 };
 

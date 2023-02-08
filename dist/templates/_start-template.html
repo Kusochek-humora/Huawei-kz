@@ -21,7 +21,7 @@
         <ul class="menu">
             <li class="menu__item">
                 <p class="menu__item-title">Тұтынушыларға</p>
-                <div class="menu__dropdown">
+                <div class="menu__dropdown ">
                     <div class="menu__dropdown-top">
                         <div class="container-minor">
                             <ul class="menu__dropdown-top-list">
@@ -65,16 +65,16 @@
                                 <span>Тұтынушыларға</span>
                             </a>
                             <button class="menu__dropdown-close" type="button" aria-label="Закрытие меню">
-                               
+
                             </button>
                         </div>
                     </div>
 
                 </div>
             </li>
-            <li class="menu__item">
+            <li class="menu__item ">
                 <p class="menu__item-title">Бизнеске</p>
-                <div  class="menu__dropdown ">
+                <div class="menu__dropdown  ">
                     <div class="menu__dropdown-top">
                         <div class="container-minor menu__dropdown-top-container">
                             <div class="menu__dropdown-submenu small">
@@ -279,7 +279,7 @@
                                 <span>Операторларға</span>
                             </a>
                             <button class="menu__dropdown-close" type="button" aria-label="Закрытие меню">
-                               
+
                             </button>
                         </div>
                     </div>
@@ -288,7 +288,7 @@
             </li>
             <li class="menu__item">
                 <p class="menu__item-title">Компания туралы</p>
-                <div  class="menu__dropdown ">
+                <div class="menu__dropdown  ">
                     <div class="menu__dropdown-top">
                         <div class="container-minor menu__dropdown-top-container">
                             <div class="menu__dropdown-submenu menu__dropdown-submenu--secondary ">
@@ -358,7 +358,7 @@
                     <div class="menu__dropdown-bottom menu__dropdown-bottom--null ">
                         <div class="container-minor menu__dropdown-bottom-container ">
                             <button class="menu__dropdown-close" type="button" aria-label="Закрытие меню">
-                               
+
                             </button>
                         </div>
                     </div>
@@ -381,20 +381,23 @@
 
         </div>
         <div class="search">
-            <form action="#" class="search__form">
-                <label class="search__label"><input type="search" class="search__input" placeholder="Іздегеніңіз">
-                </label>
+            <div class="search-box">
+                <form action="#" class="search__form">
+                    <label class="search__label"><input type="search" class="search__input" placeholder="Іздегеніңіз">
+                    </label>
 
-            </form>
-            <button class="search__close" type="button" aria-label="Закрыть поисковик">
-                <img src="images/close-search.svg" alt="Icon" class="search__close-image">
-            </button>
+                </form>
+                <button class="search__close" type="button" aria-label="Закрыть поисковик">
+                    <img src="images/close-search.svg" alt="Icon" class="search__close-image">
+                </button>
+            </div>
         </div>
         <button class="header__search-btn" type="button" aria-label="Открыть поисковик"><img src="images/searcher.svg"
                 alt="icon" class="header__search-btn-image">
         </button>
         <button class="burger-button" type="button" aria-label="Меню">
             <span></span><span></span><span></span>
+
         </button>
     </nav>
 </header>

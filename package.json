@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "",
+  "description": "kz version huawei",
   "scripts": {
     "start": "gulp"
   },
@@ -37,5 +37,14 @@
   "dependencies": {
     "magnific-popup": "^1.1.0",
     "normalize.css": "^8.0.1"
-  }
+  },
+  "main": "gulpfile.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kusochek-humora/Huawei-kz.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Kusochek-humora/Huawei-kz/issues"
+  },
+  "homepage": "https://github.com/Kusochek-humora/Huawei-kz#readme"
 }
