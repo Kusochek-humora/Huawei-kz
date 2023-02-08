@@ -32,10 +32,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     dropdownSecondaryBtn.classList.add('open');
                     dropdownSecondaryBtn.nextElementSibling.style.maxHeight = dropdownSecondaryBtn.nextElementSibling.scrollHeight + "px";
                     dropdownContent.style.maxHeight = (item.lastElementChild.scrollHeight + dropdownSecondaryBtn.nextElementSibling.scrollHeight) + "px";
-                } else if (e.target === dropdownSecondaryBtns[index]) {
+                } else if (e.target === dropdownSecondaryBtn && dropdownSecondaryBtn.classList.contains('open')) {
                     dropdownSecondaryBtn.classList.remove('open');
-                    dropdownSecondaryBtn.nextElementSibling.style.maxHeight = 0;
-                    dropdownContent.style.maxHeight = (item.lastElementChild.scrollHeight - dropdownSecondaryBtn.nextElementSibling.scrollHeight) + "px";
+                    dropdownSecondaryBtn.nextElementSibling.removeAttribute('style');
+                    // dropdownContent.style.maxHeight =  0;
                 }
             })
             if (e.target === item && item.classList.contains('open') === false) {
@@ -44,10 +44,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
             } else if (e.target === menuBtns[index]) {
                 item.classList.remove('open');
-                item.lastElementChild.style.maxHeight = 0;
+                item.lastElementChild.removeAttribute('style');
             }
         })
-
     }
 
     function over(e) {
@@ -84,13 +83,8 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         })
     }
-
     menu.addEventListener('mouseover', over);
     menu.addEventListener('mouseout', out);
-
-
-
-
     window.addEventListener('resize', resizeWindow);
 
     function resizeWindow(func) {
@@ -99,22 +93,19 @@ document.addEventListener('DOMContentLoaded', function () {
             menu.removeEventListener('click', menuMobile);
             menu.addEventListener('mouseover', over);
             menu.addEventListener('mouseout', out);
-
             const menuBtns = menu.querySelectorAll('.menu__item');
             menuBtns.forEach((item, index) => {
                 let dropdownContent = item.lastElementChild,
                     dropdownSecondaryBtns = dropdownContent.querySelectorAll('.menu__dropdown-submenu-button');
                 dropdownSecondaryBtns.forEach(dropdownSecondaryBtn => {
-                    if ((window.scrollHeight > 767)) {
-                        dropdownSecondaryBtn.classList.remove('open');
-                        dropdownSecondaryBtn.nextElementSibling.removeAttribute('style')
-                        dropdownContent.removeAttribute('style');
-                    }
+                    dropdownSecondaryBtn.classList.remove('open');
+                    dropdownSecondaryBtn.nextElementSibling.removeAttribute('style')
+                    dropdownContent.removeAttribute('style');
                 })
-                if (window.scrollHeight > 767) {
-                    item.classList.remove('open');
-                    item.lastElementChild.removeAttribute('style');
-                }
+
+                item.classList.remove('open');
+                item.lastElementChild.removeAttribute('style');
+
             })
         }
         if (paigeWidth <= 767) {
