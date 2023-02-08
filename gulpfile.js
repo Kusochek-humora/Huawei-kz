@@ -58,7 +58,14 @@ export const buildJs = (done) => {
 // Styles
 
 export const buildCss = (done) => {
-	
+	// gulp.src([
+	// 		'node_modules/normalize.css/normalize.css',
+	// 	])
+	// 	.pipe(prefixer())
+	// 	.pipe(csso())
+	// 	.pipe(concat('vendor.min.css'))
+	// 	.pipe(gulp.dest('dist/css'))
+	// 	.pipe(sync.stream());
 
 	gulp.src('src/scss/main.scss')
 		.pipe(plumber())
