@@ -13,7 +13,8 @@ document.addEventListener('DOMContentLoaded', function () {
         langDropdown = langBox.querySelector('.lang__dropdown'),
         menu = document.querySelector('.menu'),
         overlay = document.querySelector('.overlay'),
-        burgerBtn = document.querySelector('.burger-button');
+        burgerBtn = document.querySelector('.burger-button'),
+        footerBox = document.querySelector('.footer-medium');
 
     burgerBtn.addEventListener('click', function (e) {
         e.target.classList.toggle('active');
@@ -90,6 +91,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function resizeWindow(func) {
         let paigeWidth = document.documentElement.scrollWidth;
         if (paigeWidth >= 767) {
+            let width = 'desktop';
             menu.removeEventListener('click', menuMobile);
             menu.addEventListener('mouseover', over);
             menu.addEventListener('mouseout', out);
@@ -107,8 +109,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 item.lastElementChild.removeAttribute('style');
 
             })
+            removeDisabled(footerBox, width);
         }
         if (paigeWidth <= 767) {
+            let width = 'mobile';
             menu.addEventListener('click', menuMobile);
             menu.removeEventListener('mouseover', over);
             menu.removeEventListener('mouseout', out);
@@ -117,6 +121,7 @@ document.addEventListener('DOMContentLoaded', function () {
             menuDropdowns.forEach((item, index) => {
                 item.classList.remove('active');
             })
+            removeDisabled(footerBox, width);
         }
 
     }
@@ -167,6 +172,42 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
+    function removeDisabled(accordeons, windowWidth) {
+        const footerAccordeon = accordeons.querySelectorAll('.footer-accordeon');
+        footerAccordeon.forEach((item, index) => {
+            const footerAccordeonButton = item.querySelector('.footer-accordeon__button');
+            if (windowWidth == 'mobile') {
+                footerAccordeonButton.removeAttribute('disabled');
+
+            } else if (windowWidth == 'desktop') {
+                footerAccordeonButton.setAttribute("disabled", "disabled");
+
+            }
+        })
+    }
+
+
+
+
+    footerBox.addEventListener('click', function (e) {
+        const footerAccordeons = footerBox.querySelectorAll('.footer-accordeon__button');
+
+        footerAccordeons.forEach((item, index) => {
+            if (e.target === item) {
+                if (item.classList.contains('active') === false) {
+                    item.classList.add('active');
+                    item.nextElementSibling.style.maxHeight = item.nextElementSibling.scrollHeight + "px";
+                } else if (item.classList.contains('active')) {
+                    item.classList.remove('active');
+                    item.nextElementSibling.removeAttribute('style');
+
+                }
+            }
+
+
+        })
+
+    })
 
 
     searchBtn.addEventListener('click', addClasses);
