@@ -30,7 +30,7 @@
     &__button {
         position: absolute;
         z-index: 2;
-        bottom: 38.7%;
+        bottom: 33%;
         left: 50%;
         transform: translateX(-50%);
     }
@@ -40,17 +40,29 @@
 
     &__slider-btn-left,
     &__slider-btn-right {
-        width: 18px;
+        width: 60px;
+        display: flex;
+
         height: 32px;
+        path {
+            transition: 0.3s all;
+        }
+        &:hover {
+            path {
+                fill: $red;
+            }
+        }
         &::after {
             display: none;
         }
     }
 
     &__slider-btn-left {
+        justify-content: flex-start;
         left: 27px;
     }
     &__slider-btn-right {
+        justify-content: flex-end;
         right: 27px;
     }
     .swiper-container-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet {
@@ -117,7 +129,7 @@
         .container-main {
             padding: 0 30px;
         }
-     
+
         &__slider-btn-left,
         &__slider-btn-right {
             top: calc(50% - 46px);
