@@ -15,8 +15,11 @@ body {
     position: relative;
 }
 
-// body {
-// }
+body {
+    &.active {
+        overflow-y: hidden;
+    }
+}
 
 h1,
 h2,
@@ -144,4 +147,12 @@ input::-webkit-search-results-decoration {
         background-color: rgba(51, 51, 51, 0.5);
         z-index: 10;
     }
+}
+.button-link {
+    border: 1px solid #ffffff;
+    background-color: transparent;
+    color: $white;
+    font-size: 16px;
+    display: inline-block;
+    padding: 10px 32px;
 }

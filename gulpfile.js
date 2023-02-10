@@ -31,7 +31,8 @@ export const buildHtml = () => {
 
 export const buildJs = (done) => {
 	gulp.src([
-			'src/js/vendor/*.js'
+			'src/js/vendor/*.js',
+			'node_modules/swiper/swiper-bundle.js'
 		])
 		.pipe(plumber())
 		.pipe(uglify())
@@ -51,21 +52,33 @@ export const buildJs = (done) => {
 		.pipe(concat('main.min.js'))
 		.pipe(gulp.dest('dist/js'))
 		.pipe(sync.stream());
-
+		
+	gulp.src('src/js/swiper.js')
+		.pipe(plumber())
+		.pipe(rigger())
+		.pipe(babel({
+			presets: ['@babel/preset-env']
+		}))
+		.pipe(sourcemaps.init())
+		.pipe(uglify())
+		.pipe(sourcemaps.write())
+		.pipe(concat('swiper.min.js'))
+		.pipe(gulp.dest('dist/js'))
+		.pipe(sync.stream());
 	done();
 };
 
 // Styles
 
 export const buildCss = (done) => {
-	// gulp.src([
-	// 		'node_modules/normalize.css/normalize.css',
-	// 	])
-	// 	.pipe(prefixer())
-	// 	.pipe(csso())
-	// 	.pipe(concat('vendor.min.css'))
-	// 	.pipe(gulp.dest('dist/css'))
-	// 	.pipe(sync.stream());
+	gulp.src([
+			'node_modules/swiper/swiper-bundle.css',
+		])
+		.pipe(prefixer())
+		.pipe(csso())
+		.pipe(concat('vendor.min.css'))
+		.pipe(gulp.dest('dist/css'))
+		.pipe(sync.stream());
 
 	gulp.src('src/scss/main.scss')
 		.pipe(plumber())

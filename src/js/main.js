@@ -2,6 +2,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     //header
     const header = document.querySelector('.header'),
+        body = document.querySelector('body'),
         searchBtn = document.querySelector('.header__search-btn'),
         searchBox = document.querySelector('.search'),
         headerMenu = document.querySelector('.menu'),
@@ -19,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
     burgerBtn.addEventListener('click', function (e) {
         e.target.classList.toggle('active');
         menu.classList.toggle('active');
+        body.classList.toggle('active');
     });
 
     function menuMobile(e) {
@@ -54,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const menuItem = menu.querySelectorAll('.menu__item'),
             menuClose = menu.querySelectorAll('.menu__dropdown-close');
-        console.log(e.target, e.currentTarget)
+
         menuItem.forEach((item, index) => {
             // item.lastElementChild.classList.remove('active');
             if (e.target === item) {
@@ -151,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function closingLangBox(btn) {
-        console.log(btn)
+
         if (langDropdown.hasAttribute('style')) {
             langBoxBtn.classList.remove('active');
             langDropdown.removeAttribute('style');
@@ -214,6 +216,11 @@ document.addEventListener('DOMContentLoaded', function () {
     searchBtnClose.addEventListener('click', removeClasses);
     langBox.addEventListener('click', closingLangBox);
     langForm.addEventListener('change', choosingTextLang);
+
+
+
+
+
 
 
     resizeWindow();

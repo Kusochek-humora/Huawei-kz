@@ -193,12 +193,12 @@
     }
 }
 @media screen and(max-width:500px) {
-    .footer{
-        .container-main{
-            padding:0 10px ;
+    .footer {
+        .container-main {
+            padding: 0 10px;
         }
     }
-    .footer-template{
+    .footer-template {
         flex: 1 1 100%;
     }
     .footer-top {
@@ -226,11 +226,11 @@
         &-list {
             margin-left: 0;
             flex-wrap: wrap;
-    max-width: 251px;
+            max-width: 251px;
             gap: 28px 28px;
             justify-content: center;
             &__item {
-  flex: none;
+                flex: none;
             }
         }
         .footer-container {
