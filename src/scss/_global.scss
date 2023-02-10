@@ -16,8 +16,15 @@ body {
 }
 
 body {
+    position: relative;
+
     &.active {
+        z-index: -1;
+// max-height: 0;
         overflow-y: hidden;
+        touch-action: none;
+        -ms-touch-action: none;
+        // -webkit-overflow-scrolling:touch;
     }
 }
 
