@@ -20,10 +20,9 @@ body {
 
     &.active {
         z-index: -1;
-// max-height: 0;
+        // position: fixed;
         overflow-y: hidden;
-        touch-action: none;
-        -ms-touch-action: none;
+
         // -webkit-overflow-scrolling:touch;
     }
 }
@@ -136,6 +135,21 @@ input {
 // }
 .title {
     font-weight: bold;
+    font-size: 32px;
+    position: relative;
+    text-align: center;
+    padding-bottom: 22px;
+    margin-bottom: 50px;
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: $red;
+        width: 60px;
+        height: 2.5px;
+    }
 }
 
 input::-webkit-search-decoration,
