@@ -2,6 +2,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     //header
     const header = document.querySelector('.header'),
+        html = document.querySelector('html'),
         body = document.querySelector('body'),
         searchBtn = document.querySelector('.header__search-btn'),
         searchBox = document.querySelector('.search'),
@@ -20,8 +21,17 @@ document.addEventListener('DOMContentLoaded', function () {
     burgerBtn.addEventListener('click', function (e) {
         e.target.classList.toggle('active');
         menu.classList.toggle('active');
-        body.classList.toggle('active');
+        if (e.target.classList.contains('active')) {
+            body.classList.add('active');
+            html.classList.add('active')
+            header.style.boxShadow = " 0px 4px 4px rgba(0, 0, 0, 0.1);"
+        } else {
+            body.classList.remove('active');
+            html.classList.remove('active');
+        }
     });
+
+
 
     function menuMobile(e) {
         const menuBtns = menu.querySelectorAll('.menu__item');
@@ -67,6 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 e.target.lastElementChild.classList.add('active');
 
                 overlay.classList.add('active');
+                header.classList.add('active')
             }
             menuClose[index].addEventListener('click', function () {
                 item.lastElementChild.classList.remove('active');
@@ -83,6 +94,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (e.relatedTarget === overlay) {
                 item.lastElementChild.classList.remove('active');
                 overlay.classList.remove('active');
+                header.classList.remove('active')
             }
         })
     }
@@ -111,6 +123,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 item.lastElementChild.removeAttribute('style');
 
             })
+            body.classList.remove('active');
+            html.classList.remove('active');
             removeDisabled(footerBox, width);
         }
         if (paigeWidth <= 767) {
@@ -122,6 +136,17 @@ document.addEventListener('DOMContentLoaded', function () {
             const menuDropdowns = menu.querySelectorAll('.menu__dropdown');
             menuDropdowns.forEach((item, index) => {
                 item.classList.remove('active');
+            })
+            const menuItem = menu.querySelectorAll('.menu__item'),
+                menuClose = menu.querySelectorAll('.menu__dropdown-close');
+            // body.classList.add('active');
+            // html.classList.add('active');
+            menuItem.forEach((item, index) => {
+
+                item.lastElementChild.classList.remove('active');
+                // overlay.classList.remove('active');
+                header.classList.remove('active')
+
             })
             removeDisabled(footerBox, width);
         }
@@ -218,8 +243,25 @@ document.addEventListener('DOMContentLoaded', function () {
     langForm.addEventListener('change', choosingTextLang);
 
 
+    // Initial state
+    let scrollPos = 0;
+    // adding scroll event
+    window.addEventListener('scroll', function () {
+        if ((document.body.getBoundingClientRect()).top < -105) {
+            if ((document.body.getBoundingClientRect()).top > scrollPos) {
+                header.classList.remove('inactive');
+
+            } else {
+                header.classList.add('inactive');
+                // overlay.classList.remove('active');
+            }
+        }
+
+        scrollPos = (document.body.getBoundingClientRect()).top;
 
 
+
+    });
 
 
 
