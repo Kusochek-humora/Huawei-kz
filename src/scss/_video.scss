@@ -1,0 +1,51 @@
+.video {
+    @media screen and (max-width: 768px) {
+        display: none;
+    }
+    padding-top: 80px;
+    &__template {
+        background-image: url(../images/video-banner.jpg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        min-height: 400px;
+        max-width: 1200px;
+        width: 100%;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        height: 400px;
+        justify-content: center;
+    }
+
+    &__title {
+        display: inline-block;
+        font-size: 36px;
+        color: $white;
+        max-width: 530px;
+        text-align: left;
+        font-weight: 400;
+        letter-spacing: 0.02em;
+        &::after {
+            left: 0;
+            transform: translateX(0);
+            width: 100px;
+        }
+    }
+    &__button {
+        width: 185px;
+        display: inline-block;
+        // margin-top: 50px;
+    }
+}
+// .container-minor {
+// }
+// .title {
+// }
+
+// .button-link {
+// }

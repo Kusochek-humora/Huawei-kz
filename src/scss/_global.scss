@@ -1,9 +1,9 @@
 html {
     box-sizing: border-box;
- &.active{
-    height: 100vh;
-    overflow: hidden;
- }
+    &.active {
+        height: 100vh;
+        overflow: hidden;
+    }
 }
 
 *,
@@ -17,7 +17,6 @@ body {
     height: 100%;
     font-family: Arial, Helvetica, sans-serif;
     position: relative;
-    
 }
 // html{
 //     overflow: hidden;
@@ -191,5 +190,14 @@ input::-webkit-search-results-decoration {
         background-color: $red;
 
         border: 1px solid $red;
+    }
+    &.black {
+        border: 1px solid #333333;
+        color: black;
+        &:hover {
+            background-color: $red;
+            color: $white;
+            border: 1px solid $red;
+        }
     }
 }

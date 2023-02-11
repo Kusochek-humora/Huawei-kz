@@ -16,7 +16,9 @@ document.addEventListener('DOMContentLoaded', function () {
         menu = document.querySelector('.menu'),
         overlay = document.querySelector('.overlay'),
         burgerBtn = document.querySelector('.burger-button'),
-        footerBox = document.querySelector('.footer-medium');
+        footerBox = document.querySelector('.footer-medium'),
+        scrollCard = document.querySelector('.events__card'),
+        scrollCardOverlay = document.querySelector('.events__card--scroll');
 
     burgerBtn.addEventListener('click', function (e) {
         e.target.classList.toggle('active');
@@ -242,7 +244,6 @@ document.addEventListener('DOMContentLoaded', function () {
     langBox.addEventListener('click', closingLangBox);
     langForm.addEventListener('change', choosingTextLang);
 
-
     // Initial state
     let scrollPos = 0;
     // adding scroll event
@@ -258,12 +259,27 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         scrollPos = (document.body.getBoundingClientRect()).top;
-
-
-
     });
 
+    scrollCard.addEventListener('scroll', function (e) {
+        // const posTop =  scrollCardContent.getBoundingClientRect().top;
+        // console.log(posTop)
 
+        // console.log(e.target.scrollHeight)
+        if ((e.target.offsetHeight + e.target.scrollTop) === scrollCard.scrollHeight) {
+            scrollCardOverlay.classList.add('inactive');
+        } else {
+            scrollCardOverlay.classList.remove('inactive');
+        }
+        // Блок достиг верхней границы экрана (или выше)
+        // elem.classList.toggle('visible', posTop <= 0);
+
+        // Блок только появляется снизу (или выше)
+        // elem.classList.toggle('visible', posTop < window.innerHeight);
+
+        // Блок целиком находится в видимой зоне
+        // elem.classList.toggle('visible', posTop + elem.clientHeight <= window.innerHeight && posTop >= 0);
+    });
 
     resizeWindow();
 });
