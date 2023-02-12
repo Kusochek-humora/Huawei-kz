@@ -23,10 +23,11 @@ body {
 // }
 body {
     &.active {
-        z-index: -1;
+        height: 100vh;
+        z-index: 0;
         // position: fixed;
         overflow-y: hidden;
-        height: 100vh;
+
         // -webkit-overflow-scrolling:touch;
     }
 }

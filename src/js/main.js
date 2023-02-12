@@ -20,16 +20,33 @@ document.addEventListener('DOMContentLoaded', function () {
         scrollCard = document.querySelector('.events__card'),
         scrollCardOverlay = document.querySelector('.events__card--scroll');
 
+    function stopDefAction(evt) {
+        evt.preventDefault();
+    }
+
+
+ 
+
     burgerBtn.addEventListener('click', function (e) {
-        e.target.classList.toggle('active');
-        menu.classList.toggle('active');
+
+
+        header.classList.remove('inactive');
         if (e.target.classList.contains('active')) {
-            body.classList.add('active');
-            html.classList.add('active')
-            header.style.boxShadow = " 0px 4px 4px rgba(0, 0, 0, 0.1);"
-        } else {
+            e.target.classList.remove('active');
+            menu.classList.remove('active');
             body.classList.remove('active');
             html.classList.remove('active');
+
+
+
+        } else {
+
+
+            menu.classList.add('active');
+            e.target.classList.add('active');
+            body.classList.add('active');
+            html.classList.add('active');
+            header.style.boxShadow = " 0px 4px 4px rgba(0, 0, 0, 0.1);";
         }
     });
 
@@ -253,6 +270,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 header.classList.remove('inactive');
 
             } else {
+
                 header.classList.add('inactive');
                 // overlay.classList.remove('active');
             }
@@ -262,23 +280,13 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     scrollCard.addEventListener('scroll', function (e) {
-        // const posTop =  scrollCardContent.getBoundingClientRect().top;
-        // console.log(posTop)
 
-        // console.log(e.target.scrollHeight)
         if ((e.target.offsetHeight + e.target.scrollTop) === scrollCard.scrollHeight) {
             scrollCardOverlay.classList.add('inactive');
         } else {
             scrollCardOverlay.classList.remove('inactive');
         }
-        // Блок достиг верхней границы экрана (или выше)
-        // elem.classList.toggle('visible', posTop <= 0);
 
-        // Блок только появляется снизу (или выше)
-        // elem.classList.toggle('visible', posTop < window.innerHeight);
-
-        // Блок целиком находится в видимой зоне
-        // elem.classList.toggle('visible', posTop + elem.clientHeight <= window.innerHeight && posTop >= 0);
     });
 
     resizeWindow();
