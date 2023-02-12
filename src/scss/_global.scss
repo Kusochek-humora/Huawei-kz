@@ -1,8 +1,8 @@
 html {
     box-sizing: border-box;
+    // z-index: -1;
     &.active {
-        height: 100vh;
-        overflow: hidden;
+        // height: 100vh !important;
     }
 }
 
@@ -22,11 +22,11 @@ body {
 //     overflow: hidden;
 // }
 body {
+   
     &.active {
-        height: 100vh;
-      
-        // position: fixed;
-        overflow-y: hidden;
+        overflow: hidden;
+
+        // overflow-y: hidden;
 
         // -webkit-overflow-scrolling:touch;
     }

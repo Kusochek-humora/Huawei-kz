@@ -30,13 +30,13 @@ document.addEventListener('DOMContentLoaded', function () {
     burgerBtn.addEventListener('click', function (e) {
 
 
-        header.classList.remove('inactive');
+       
         if (e.target.classList.contains('active')) {
             e.target.classList.remove('active');
             menu.classList.remove('active');
             body.classList.remove('active');
             html.classList.remove('active');
-
+            // header.classList.remove('inactive');
 
 
         } else {
