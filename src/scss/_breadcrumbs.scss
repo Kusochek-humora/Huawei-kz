@@ -1,5 +1,5 @@
 .breadcrumbs {
-    margin-top: 76px;
+    margin-top: 75px;
     display: flex;
     justify-content: center;
     position: relative;
@@ -10,7 +10,7 @@
     &-title {
         font-weight: 700;
         padding-right: 20px;
-        height: 41px;
+        height: 46px;
         position: relative;
         cursor: default;
         &::after {
@@ -29,7 +29,7 @@
         display: flex;
         gap: 0 30px;
         &-link {
-            height: 41px;
+            height: 46px;
             display: block;
             padding-top: 13px;
             position: relative;
@@ -79,6 +79,10 @@
             transition: 0.3s all;
             // &.active {
             // }
+            &-link{
+                padding-top: 15px;
+                
+            }
             &-item {
                 padding-left: 20px;
                 width: 100%;
@@ -92,7 +96,7 @@
                         position: absolute;
                         content: "";
                         left: 0;
-                        top: 49%;
+                        top: 50%;
                         transform: translateY(-50%);
                         background-image: url(../images/vector-breadcrumbs.svg);
                         height: 10px;
@@ -106,9 +110,7 @@
                     border-bottom: 1px solid #e6e6e6;
                     border-top: 1px solid #e6e6e6;
                 }
-                &:first-child {
-                    border-top: 1px solid #e6e6e6;
-                }
+                border-top: 1px solid #e6e6e6;
             }
         }
     }
