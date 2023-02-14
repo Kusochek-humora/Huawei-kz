@@ -36,6 +36,7 @@
         display: inline-block;
         border: 1px solid #bebdbd;
         padding: 15px 45px 15px 20px;
+        background-color: $white;
         &::placeholder {
             color: #757575;
         }

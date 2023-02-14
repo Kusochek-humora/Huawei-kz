@@ -16,37 +16,80 @@ document.addEventListener('DOMContentLoaded', function () {
         menu = document.querySelector('.menu'),
         overlay = document.querySelector('.overlay'),
         burgerBtn = document.querySelector('.burger-button'),
-        footerBox = document.querySelector('.footer-medium'),
-        scrollCard = document.querySelector('.events__card'),
-        scrollCardOverlay = document.querySelector('.events__card--scroll');
+        footerBox = document.querySelector('.footer-medium');
 
-    function stopDefAction(evt) {
-        evt.preventDefault();
+    // Initial state
+    let scrollPos = 0;
+    // adding scroll event
+    function scrollConditional() {
+        let paigeWidth = document.documentElement.scrollWidth;
+        if (paigeWidth > 768)
+            if ((document.body.getBoundingClientRect()).top < -200) {
+
+                if ((document.body.getBoundingClientRect()).top > scrollPos) {
+
+                    header.classList.remove('inactive');
+
+
+                } else {
+                    header.classList.add('inactive');
+                }
+
+            }
+        scrollPos = (document.body.getBoundingClientRect()).top;
     }
 
 
- 
 
+    window.addEventListener('scroll', scrollConditional);
+
+
+
+    let bodyScrollTop = null;
+    let locked = false;
+
+    // Заблокировать прокрутку страницы
+    function lockScroll() {
+        if (!locked) {
+            bodyScrollTop = (typeof window.pageYOffset !== 'undefined') ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
+            body.classList.add('active');
+            body.style.top = `-${bodyScrollTop}px`;
+
+            locked = true;
+        };
+    }
+
+    // Включить прокрутку страницы
+    function unlockScroll() {
+        if (locked) {
+            body.classList.remove('active');
+            body.style.top = null;
+            menu.style.top = null;
+            window.scrollTo(0, bodyScrollTop);
+            locked = false;
+        }
+    }
     burgerBtn.addEventListener('click', function (e) {
 
-
-       
         if (e.target.classList.contains('active')) {
+
+            // window.addEventListener('scroll',scrollRemoveHeader);
+            // header.classList.remove('active');
             e.target.classList.remove('active');
             menu.classList.remove('active');
             body.classList.remove('active');
             html.classList.remove('active');
-            // header.classList.remove('inactive');
 
+            unlockScroll();
 
         } else {
-
-
+            lockScroll();
             menu.classList.add('active');
             e.target.classList.add('active');
             body.classList.add('active');
             html.classList.add('active');
-            header.style.boxShadow = " 0px 4px 4px rgba(0, 0, 0, 0.1);";
+
+            // header.classList.add('active');
         }
     });
 
@@ -152,6 +195,7 @@ document.addEventListener('DOMContentLoaded', function () {
             menu.removeEventListener('mouseover', over);
             menu.removeEventListener('mouseout', out);
             overlay.classList.remove('active');
+            header.classList.remove('inactive');
             const menuDropdowns = menu.querySelectorAll('.menu__dropdown');
             menuDropdowns.forEach((item, index) => {
                 item.classList.remove('active');
@@ -261,33 +305,9 @@ document.addEventListener('DOMContentLoaded', function () {
     langBox.addEventListener('click', closingLangBox);
     langForm.addEventListener('change', choosingTextLang);
 
-    // Initial state
-    let scrollPos = 0;
-    // adding scroll event
-    window.addEventListener('scroll', function () {
-        if ((document.body.getBoundingClientRect()).top < -105) {
-            if ((document.body.getBoundingClientRect()).top > scrollPos) {
-                header.classList.remove('inactive');
 
-            } else {
 
-                header.classList.add('inactive');
-                // overlay.classList.remove('active');
-            }
-        }
 
-        scrollPos = (document.body.getBoundingClientRect()).top;
-    });
-
-    scrollCard.addEventListener('scroll', function (e) {
-
-        if ((e.target.offsetHeight + e.target.scrollTop) === scrollCard.scrollHeight) {
-            scrollCardOverlay.classList.add('inactive');
-        } else {
-            scrollCardOverlay.classList.remove('inactive');
-        }
-
-    });
 
     resizeWindow();
 });

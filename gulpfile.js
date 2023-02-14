@@ -52,7 +52,7 @@ export const buildJs = (done) => {
 		.pipe(concat('main.min.js'))
 		.pipe(gulp.dest('dist/js'))
 		.pipe(sync.stream());
-		
+
 	gulp.src('src/js/swiper.js')
 		.pipe(plumber())
 		.pipe(rigger())
@@ -63,6 +63,43 @@ export const buildJs = (done) => {
 		.pipe(uglify())
 		.pipe(sourcemaps.write())
 		.pipe(concat('swiper.min.js'))
+		.pipe(gulp.dest('dist/js'))
+		.pipe(sync.stream());
+
+	gulp.src('src/js/cards-scroll.js')
+		.pipe(plumber())
+		.pipe(rigger())
+		.pipe(babel({
+			presets: ['@babel/preset-env']
+		}))
+		.pipe(sourcemaps.init())
+		.pipe(uglify())
+		.pipe(sourcemaps.write())
+		.pipe(concat('cards-scroll.min.js'))
+		.pipe(gulp.dest('dist/js'))
+		.pipe(sync.stream());
+	gulp.src('src/js/breadcrumbs.js')
+		.pipe(plumber())
+		.pipe(rigger())
+		.pipe(babel({
+			presets: ['@babel/preset-env']
+		}))
+		.pipe(sourcemaps.init())
+		.pipe(uglify())
+		.pipe(sourcemaps.write())
+		.pipe(concat('breadcrumbs.min.js'))
+		.pipe(gulp.dest('dist/js'))
+		.pipe(sync.stream());
+	gulp.src('src/js/tab.js')
+		.pipe(plumber())
+		.pipe(rigger())
+		.pipe(babel({
+			presets: ['@babel/preset-env']
+		}))
+		.pipe(sourcemaps.init())
+		.pipe(uglify())
+		.pipe(sourcemaps.write())
+		.pipe(concat('tab.min.js'))
 		.pipe(gulp.dest('dist/js'))
 		.pipe(sync.stream());
 	done();
@@ -94,6 +131,33 @@ export const buildCss = (done) => {
 		.pipe(gulp.dest('dist/css'))
 		.pipe(sync.stream());
 
+	gulp.src('src/scss/news-paige.scss')
+		.pipe(plumber())
+		.pipe(rename({
+			suffix: '.min'
+		}))
+		.pipe(sourcemaps.init())
+		.pipe(sass())
+		.pipe(replace('(/images/', '(../images/'))
+		.pipe(prefixer())
+		.pipe(csso())
+		.pipe(sourcemaps.write('./'))
+		.pipe(gulp.dest('dist/css'))
+		.pipe(sync.stream());
+
+	gulp.src('src/scss/activity.scss')
+		.pipe(plumber())
+		.pipe(rename({
+			suffix: '.min'
+		}))
+		.pipe(sourcemaps.init())
+		.pipe(sass())
+		.pipe(replace('(/images/', '(../images/'))
+		.pipe(prefixer())
+		.pipe(csso())
+		.pipe(sourcemaps.write('./'))
+		.pipe(gulp.dest('dist/css'))
+		.pipe(sync.stream());
 	done();
 };
 

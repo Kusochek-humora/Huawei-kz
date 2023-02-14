@@ -1,0 +1,42 @@
+@import "normalize";
+@import "vars";
+@import "global";
+@import "header";
+@import "card";
+@import "breadcrumbs";
+.news {
+    padding-top: 50px;
+    @media screen and (max-width: 500px) {
+        padding-top: 50px;
+    }
+    &__button-more {
+        font-size: 16px;
+        text-align: center;
+        display: block;
+        margin: 0 auto;
+        padding-right: 20px;
+        position: relative;
+        &::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 50%;
+            background-image: url(../images/vector-third.svg);
+            width: 10px;
+            height: 6px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            transform: translateY(-50%);
+            background-position: center;
+        }
+    }
+}
+.container-minor {
+    @media screen and (max-width: 768px) {
+        padding: 0 20px;
+    }
+    @media screen and (max-width: 500px) {
+        padding: 0 10px;
+    }
+}
+@import "footer";

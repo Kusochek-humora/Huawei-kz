@@ -1,0 +1,215 @@
+.card {
+
+    display: flex;
+    gap: 50px 20px;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+    @media screen and (max-width: 500px) {
+        gap: 20px;
+    }
+    @media screen and (max-width: 420px) {
+        gap: 50px 0;
+    }
+    &__link {
+        display: inline-block;
+        flex: 1 1 calc(33% - 20px);
+    }
+    @media screen and (max-width: 768px) {
+        &__link {
+            display: inline-block;
+            flex: 1 1 calc(50% - 20px);
+        }
+    }
+    &__link-photo {
+        width: 100%;
+        height: 180px;
+        position: relative;
+    }
+
+    &__link-image {
+        width: 100%;
+        object-fit: cover;
+        height: 100%;
+        object-position: center;
+    }
+    &__link-title {
+        font-size: 16px;
+        padding: 10px;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1;
+        color: $white;
+        &::after {
+            position: absolute;
+            content: "";
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: -1;
+        }
+    }
+    &__link-info {
+        padding: 20px 20px 30px 20px;
+        background-color: #f8f8f8;
+        min-height: 175px;
+        &:hover {
+            p,
+            span {
+                color: $red;
+            }
+        }
+    }
+
+    &__link-text {
+        font-weight: 700;
+        transition: 0.3s all;
+        font-size: 16px;
+        line-height: 140%;
+        min-height: 90px;
+        margin-bottom: 10px;
+    }
+
+    &__link-date {
+        transition: 0.3s all;
+        font-size: 18px;
+        color: #666666;
+    }
+    &__card {
+        background-color: #f8f8f8;
+        position: relative;
+        overflow: auto;
+        max-height: 425px;
+        &::-webkit-scrollbar {
+            width: 5px;
+            height: 8px;
+            background-color: transparent; /* or add it to the track */
+        }
+        &::-webkit-scrollbar-thumb {
+            background-color: #adadad;
+            border-radius: 50px;
+        }
+    }
+    &__card-scroller {
+        height: max-content;
+    }
+
+    &__card--scroll {
+        flex: 1 1 calc(33% - 20px);
+        position: relative;
+        &.inactive {
+            &::before {
+                z-index: -1;
+                opacity: 0;
+            }
+        }
+        &::before {
+            opacity: 1;
+            transition: 0.4s all;
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(180deg, rgba(248, 248, 248, 0) 0%, #f8f8f8 100%);
+            z-index: 2;
+            width: 100%;
+            height: 96px;
+        }
+    }
+    &__card-link {
+        display: block;
+        &:not(:first-child) {
+            margin-top: 20px;
+        }
+    }
+    &__card-link {
+        &:hover {
+            p,
+            span {
+                color: $red;
+            }
+        }
+    }
+    &__card-content {
+        position: relative;
+        // overflow: hidden;
+
+        position: relative;
+        padding: 0 20px 30px 20px;
+        display: block;
+        margin-top: 60px;
+
+        &:first-child {
+            margin-top: 60px;
+        }
+    }
+
+    &__card-text {
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 140%;
+        color: #333333;
+        transition: 0.3s all;
+    }
+
+    &__card-date {
+        transition: 0.3s all;
+        margin-top: 4px;
+        display: inline-block;
+        font-size: 18px;
+        color: #666666;
+    }
+    @media screen and (max-width: 768px) {
+        &__link {
+            &-info {
+                min-height: unset;
+                height: auto;
+            }
+        }
+        &__inner {
+            flex-wrap: wrap;
+        }
+        &__card--scroll {
+            flex: 1 1 100%;
+        }
+        &__card {
+            max-height: 360px;
+        }
+    }
+    @media screen and (max-width: 500px) {
+        &__link {
+            &-photo {
+                height: 230px;
+            }
+            flex: 1 1 100%;
+            &-info {
+                padding: 20px 10px 20px 10px;
+                min-height: 141px;
+                height: auto;
+            }
+        }
+        &__inner {
+            flex-wrap: wrap;
+        }
+        &__card--scroll {
+            flex: 1 1 100%;
+        }
+        &__card {
+            max-height: 425px;
+            &-content {
+                padding: 0 10px 20px 10px;
+            }
+        }
+        &__box {
+            flex-direction: column;
+            &-button {
+                flex: 1 1 100%;
+            }
+        }
+    }
+}
+// .container-minor {
+// }
+// .title {
+// }

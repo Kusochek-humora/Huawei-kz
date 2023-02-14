@@ -1,0 +1,141 @@
+@import "normalize";
+@import "vars";
+@import "global";
+@import "header";
+@import "card";
+@import "breadcrumbs";
+.activity {
+    padding-top: 50px;
+    @media screen and (max-width: 500px) {
+        padding-top: 50px;
+    }
+    &__button-more {
+        font-size: 16px;
+        text-align: center;
+        display: block;
+        margin: 0 auto;
+        padding-right: 20px;
+        position: relative;
+        &::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 50%;
+            background-image: url(../images/vector-third.svg);
+            width: 10px;
+            height: 6px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            transform: translateY(-50%);
+            background-position: center;
+        }
+    }
+
+    &__inner {
+        display: none;
+        &.active {
+            display: flex;
+        }
+    }
+    &__tabs {
+        margin-bottom: 50px;
+        overflow: hidden;
+        position: relative;
+        padding: 0 30px;
+    }
+
+    &__tabs-prev,
+    &__tabs-next {
+        position: absolute;
+        background-image: url(../images/vector-breadcrumbs.svg);
+        background-repeat: no-repeat;
+        background-size: auto;
+        background-position: center;
+        width: 30px;
+        height: 100%;
+        top: 50%;
+        display: none;
+        z-index: 4;
+        background-color: $white;
+        @media screen and (max-width: 500px) {
+            display: block;
+        }
+    }
+    &__tabs-prev {
+        transform: translateY(-50%) rotateZ(180deg);
+
+        left: 0;
+    }
+    &__tabs-next {
+        transform: translateY(-50%);
+        right: 0;
+    }
+    &__tabs-container {
+        position: relative;
+        z-index: 1;
+        margin: 0 auto;
+        display: flex;
+        width: max-content;
+        border-bottom: 1px solid #e6e6e6;
+        height: 40px;
+        gap: 0 50px;
+
+        overflow-y: hidden;
+        overflow-x: hidden;
+        border-bottom: 1px solid #dfdfdf;
+        scroll-behavior: smooth;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        @media screen and (max-width: 500px) {
+            width: 100%;
+            overflow-x: auto;
+        }
+        white-space: nowrap;
+    }
+
+    &__tabs-item {
+        font-size: 14px;
+        color: #666;
+        height: 100%;
+        position: relative;
+        &.active {
+            &::after {
+                opacity: 1;
+            }
+        }
+        &:hover {
+            &::after {
+                opacity: 1;
+            }
+        }
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: $red;
+            transition: 0.3s all;
+            opacity: 0;
+        }
+    }
+}
+.container-minor {
+    @media screen and (max-width: 768px) {
+        padding: 0 20px;
+    }
+    @media screen and (max-width: 500px) {
+        padding: 0 10px;
+    }
+}
+.card {
+    &__link-info {
+        min-height: auto;
+    }
+    &__link-text {
+        min-height: 40px;
+    }
+}
+@import "footer";
