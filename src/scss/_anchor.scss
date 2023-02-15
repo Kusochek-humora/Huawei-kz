@@ -76,6 +76,9 @@
         transition: 0.3s all;
         &.active {
             color: #cf0a2c;
+            @media screen and (max-width: 768px) {
+                font-weight: bold;
+            }
         }
     }
     @media screen and (max-width: 768px) {

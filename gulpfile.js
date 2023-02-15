@@ -211,6 +211,19 @@ export const buildCss = (done) => {
 		.pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest('dist/css'))
 		.pipe(sync.stream());
+		gulp.src('src/scss/contacts.scss')
+		.pipe(plumber())
+		.pipe(rename({
+			suffix: '.min'
+		}))
+		.pipe(sourcemaps.init())
+		.pipe(sass())
+		.pipe(replace('(/images/', '(../images/'))
+		.pipe(prefixer())
+		.pipe(csso())
+		.pipe(sourcemaps.write('./'))
+		.pipe(gulp.dest('dist/css'))
+		.pipe(sync.stream());
 	done();
 };
 

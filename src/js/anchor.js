@@ -17,7 +17,8 @@ document.addEventListener('DOMContentLoaded', function () {
     anchor.addEventListener('click', function (e) {
         anchorLink.forEach((item, index) => {
             if (e.target === item) {
-
+                anchorBtn.classList.remove('active');
+                anchorList.removeAttribute('style');
 
                 anchorItem[index].scrollIntoView({
                     block: "start",
@@ -32,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
         anchorItem.forEach((item, index) => {
 
             if (document.body.scrollTop + 120 > item.getBoundingClientRect().top) {
-   
+
                 anchorLink.forEach(item => {
                     item.classList.remove('active');
 
