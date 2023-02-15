@@ -23,19 +23,19 @@ document.addEventListener('DOMContentLoaded', function () {
     // adding scroll event
     function scrollConditional() {
         let paigeWidth = document.documentElement.scrollWidth;
-        if (paigeWidth > 768)
-            if ((document.body.getBoundingClientRect()).top < -200) {
 
-                if ((document.body.getBoundingClientRect()).top > scrollPos) {
+        if ((document.body.getBoundingClientRect()).top < -200) {
 
-                    header.classList.remove('inactive');
+            if ((document.body.getBoundingClientRect()).top > scrollPos) {
+
+                header.classList.remove('inactive');
 
 
-                } else {
-                    header.classList.add('inactive');
-                }
-
+            } else {
+                header.classList.add('inactive');
             }
+
+        }
         scrollPos = (document.body.getBoundingClientRect()).top;
     }
 
@@ -74,19 +74,19 @@ document.addEventListener('DOMContentLoaded', function () {
         if (e.target.classList.contains('active')) {
 
             // window.addEventListener('scroll',scrollRemoveHeader);
-            // header.classList.remove('active');
+            // unlockScroll();
+
             e.target.classList.remove('active');
             menu.classList.remove('active');
-            body.classList.remove('active');
+            body.classList.remove('mobile-menu-open');
             html.classList.remove('active');
-
-            unlockScroll();
+            header.classList.remove('inactive');
 
         } else {
-            lockScroll();
+            // lockScroll();
             menu.classList.add('active');
             e.target.classList.add('active');
-            body.classList.add('active');
+            body.classList.add('mobile-menu-open');
             html.classList.add('active');
 
             // header.classList.add('active');
@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const menuItem = menu.querySelectorAll('.menu__item'),
             menuClose = menu.querySelectorAll('.menu__dropdown-close');
         menuItem.forEach((item, index) => {
-            if (e.relatedTarget === overlay) {
+            if (e.relatedTarget === overlay || e.relatedTarget === null) {
                 item.lastElementChild.classList.remove('active');
                 overlay.classList.remove('active');
                 header.classList.remove('active')
@@ -299,7 +299,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
     })
 
+    overlay.addEventListener('mouseenter', function (e) {
+        e.target.classList.remove('active');
+        const menuItem = menu.querySelectorAll('.menu__item'),
+            menuClose = menu.querySelectorAll('.menu__dropdown-close');
+        menuItem.forEach((item, index) => {
 
+            item.lastElementChild.classList.remove('active');
+            overlay.classList.remove('active');
+            header.classList.remove('active')
+
+        })
+    });
     searchBtn.addEventListener('click', addClasses);
     searchBtnClose.addEventListener('click', removeClasses);
     langBox.addEventListener('click', closingLangBox);

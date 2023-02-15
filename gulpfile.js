@@ -66,6 +66,19 @@ export const buildJs = (done) => {
 		.pipe(gulp.dest('dist/js'))
 		.pipe(sync.stream());
 
+		gulp.src('src/js/speakers-slider.js')
+		.pipe(plumber())
+		.pipe(rigger())
+		.pipe(babel({
+			presets: ['@babel/preset-env']
+		}))
+		.pipe(sourcemaps.init())
+		.pipe(uglify())
+		.pipe(sourcemaps.write())
+		.pipe(concat('speakers-slider.min.js'))
+		.pipe(gulp.dest('dist/js'))
+		.pipe(sync.stream());
+
 	gulp.src('src/js/cards-scroll.js')
 		.pipe(plumber())
 		.pipe(rigger())
@@ -100,6 +113,18 @@ export const buildJs = (done) => {
 		.pipe(uglify())
 		.pipe(sourcemaps.write())
 		.pipe(concat('tab.min.js'))
+		.pipe(gulp.dest('dist/js'))
+		.pipe(sync.stream());
+		gulp.src('src/js/anchor.js')
+		.pipe(plumber())
+		.pipe(rigger())
+		.pipe(babel({
+			presets: ['@babel/preset-env']
+		}))
+		.pipe(sourcemaps.init())
+		.pipe(uglify())
+		.pipe(sourcemaps.write())
+		.pipe(concat('anchor.min.js'))
 		.pipe(gulp.dest('dist/js'))
 		.pipe(sync.stream());
 	done();
