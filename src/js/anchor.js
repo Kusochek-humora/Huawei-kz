@@ -31,15 +31,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
         anchorItem.forEach((item, index) => {
 
-            if (document.body.scrollTop + 230 > item.getBoundingClientRect().top) {
+            if (document.body.scrollTop + 120 > item.getBoundingClientRect().top) {
+   
                 anchorLink.forEach(item => {
                     item.classList.remove('active');
+
                 })
                 anchorLink[index].classList.add('active');
-                anchorBtn.textContent = anchorLink[index].innerText;
-            } else {
-
+                anchorBtn.textContent = anchorLink[index].textContent;
+            } else if (document.body.scrollTop <= -150) {
                 anchorLink[index].classList.remove('active');
+                anchorBtn.textContent = anchorLink[0].textContent;
+                anchorBtn.classList.remove('active');
+                anchorList.removeAttribute('style');
             }
         })
 
