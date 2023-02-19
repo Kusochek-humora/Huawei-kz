@@ -52,6 +52,18 @@ export const buildJs = (done) => {
 		.pipe(concat('main.min.js'))
 		.pipe(gulp.dest('dist/js'))
 		.pipe(sync.stream());
+		gulp.src('src/js/years.js')
+		.pipe(plumber())
+		.pipe(rigger())
+		.pipe(babel({
+			presets: ['@babel/preset-env']
+		}))
+		.pipe(sourcemaps.init())
+		.pipe(uglify())
+		.pipe(sourcemaps.write())
+		.pipe(concat('years.min.js'))
+		.pipe(gulp.dest('dist/js'))
+		.pipe(sync.stream());
 
 	gulp.src('src/js/swiper.js')
 		.pipe(plumber())
