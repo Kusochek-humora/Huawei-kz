@@ -14,8 +14,8 @@ document.addEventListener('DOMContentLoaded', function () {
             disableOnInteraction: false
         },
         navigation: {
-            nextEl: '.speakers__slider-button-prev',
-            prevEl: '.speakers__slider-button-next',
+            nextEl: '.speakers__slider-button-next',
+            prevEl: '.speakers__slider-button-prev',
         },
 
         breakpoints: {
